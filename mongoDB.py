@@ -17,7 +17,7 @@ def insert_news(news):
     print(news)
     if len(news) > 0:
         mycol.insert_many(news)
-        githubIssue(news)
+        githubIssue.make_issue(news)
         print("저장에 성공하셨습니다.")
 
 
