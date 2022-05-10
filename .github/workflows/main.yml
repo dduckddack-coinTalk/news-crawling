@@ -29,6 +29,13 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install beautifulsoup4
+        pip install requests
+        pip install pymongo
+        pip install datetime
     - name: Run Python
       env:
         MONGO_ID: ${{ secrets.MONGO_ID }}
