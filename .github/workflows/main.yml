@@ -12,7 +12,7 @@ on:
 
 # 한국 시간 기준 자정에 크롤링 실행
   schedule:
-    - cron: '10 * * * *'
+    - cron: '1 * * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.6, 3.7, 3.8]
+        python-version: [3.8]
 
     steps:
     - uses: actions/checkout@v1
@@ -36,10 +36,12 @@ jobs:
         pip install requests
         pip install pymongo
         pip install datetime
+        pip install PyGithub
     - name: Run Python
       env:
         MONGO_ID: ${{ secrets.MONGO_ID }}
         MONGO_PW: ${{ secrets.MONGO_PW }}
         MONGO_HOST: ${{ secrets.MONGO_HOST }}
+        ISSUE_TOKEN: ${{ secrets.ISSUE_TOKEN }}
       run: |
         python3 main.py
