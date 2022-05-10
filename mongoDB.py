@@ -1,6 +1,11 @@
 from pymongo import MongoClient
+import os
 
-client = MongoClient(host='localhost', port=27017)
+MONGO_ID = os.environ['MONGO_ID']
+MONGO_PW = os.environ['MONGO_PW']
+MONGO_HOST = os.environ['MONGO_HOST']
+
+client = MongoClient('mongodb://'+MONGO_ID+':'+MONGO_PW+'@'+MONGO_HOST, 27017)
 
 mydb = client['test']
 mycol = mydb['customers']
@@ -15,4 +20,3 @@ def saved_last_date():
     last_row = mycol.find().sort([("createdAt", -1)]).limit(1)
     saved_last = last_row.next()["createdAt"]
     return saved_last
-

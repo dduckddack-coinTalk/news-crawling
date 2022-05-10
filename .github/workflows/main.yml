@@ -30,5 +30,9 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Run Python
+      env:
+        MONGO_ID: ${{ secrets.MONGO_ID }}
+        MONGO_PW: ${{ secrets.MONGO_PW }}
+        MONGO_HOST: ${{ secrets.MONGO_HOST }}
       run: |
         python3 main.py
