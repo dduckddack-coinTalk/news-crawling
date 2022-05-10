@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 import os
+import githubIssue
 
 MONGO_ID = os.environ['MONGO_ID']
 MONGO_PW = os.environ['MONGO_PW']
@@ -16,6 +17,7 @@ def insert_news(news):
     print(news)
     if len(news) > 0:
         mycol.insert_many(news)
+        githubIssue(news)
         print("저장에 성공하셨습니다.")
 
 
