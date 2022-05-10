@@ -5,7 +5,7 @@ from datetime import datetime
 
 def make_issue(news):
     ISSUE_TOKEN = os.environ['ISSUE_TOKEN']
-    title = datetime.now() + "뉴스 크롤링"
+    title = str(datetime.now()) + "뉴스 크롤링"
     body = news
     REPO_NAME = 'https://github.com/dduckddack-coinTalk/news-crawling.git'
 
