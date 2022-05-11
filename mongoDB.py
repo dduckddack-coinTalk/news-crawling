@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 import os
-import githubIssue
 
 MONGO_ID = os.environ['MONGO_ID']
 MONGO_PW = os.environ['MONGO_PW']
@@ -9,16 +8,14 @@ MONGO_HOST = os.environ['MONGO_HOST']
 
 client = MongoClient('mongodb://'+MONGO_ID+':'+MONGO_PW+'@'+MONGO_HOST, 27017)
 
-mydb = client['test']
-mycol = mydb['customers']
+mydb = client['crawling']
+mycol = mydb['news']
 
 
 def insert_news(news):
-    print(news)
     if len(news) > 0:
         mycol.insert_many(news)
-        githubIssue.make_issue(news)
-        print("저장에 성공하셨습니다.")
+        print(str(len(news)) + "개의 뉴스 저장에 성공하셨습니다.")
 
 
 def saved_last_date():
