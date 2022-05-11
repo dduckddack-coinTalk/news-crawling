@@ -11,7 +11,7 @@ def news_crawling():
     parsed_news = []
     news_domain = "https://www.coindeskkorea.com"
     saved_last_date = mongoDB.saved_last_date()
-    break_flag = false
+    break_flag = False
 
     while index < 20:
         print(str(index) + "번째 페이지")
