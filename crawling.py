@@ -12,7 +12,8 @@ def news_crawling():
     news_domain = "https://www.coindeskkorea.com"
     saved_last_date = mongoDB.saved_last_date()
 
-    while index < 100:
+    while index < 20:
+        print(str(index) + "번째 페이지")
         url = "https://www.coindeskkorea.com/news/articleList.html?page=" + str(
             index) + "&total=11166&box_idxno=&view_type=sm"
         req = requests.get(url)
