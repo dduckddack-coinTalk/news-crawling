@@ -34,6 +34,7 @@ def news_crawling():
             saved_last_date_to_date = datetime.strptime(saved_last_date, '%Y-%m-%d %H:%M')
 
             if created_at_to_date <= saved_last_date_to_date:
+                break_flag = True
                 break
 
             parsed_news.append({
